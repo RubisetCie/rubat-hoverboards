@@ -5,7 +5,6 @@
 	"ignore"	: [
 		".git*",
 		"*.code-workspace",
-		"*.bat",
 		"*.md"
 	]
 }
