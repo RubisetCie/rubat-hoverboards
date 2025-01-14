@@ -1,5 +1,5 @@
 
-TOOL.Category = "Robotboy655"
+TOOL.Category = "Fun"
 TOOL.Name = "#tool.hoverboard.name"
 
 TOOL.ClientConVar[ "model" ] = "models/dav0r/hoverboard/hoverboard.mdl"
