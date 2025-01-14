@@ -418,4 +418,3 @@ hook.Add( "CalcView", "__111hoverboards_calcview", function( pl, campos, ang, fo
 	}
 
 end )
-

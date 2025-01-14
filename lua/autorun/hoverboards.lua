@@ -28,8 +28,8 @@ if ( SERVER ) then
 		resource.AddFile( "materials/modulus_hoverboard/deathicon.vtf" )
 	end]]
 
-	resource.AddWorkshop( 150455514 )
 else
+
 	CreateConVar( "cl_hoverboard_developer", "0", FCVAR_CHEAT )
 
 	language.Add( "modulus_hoverboard", "Hoverboard" )

@@ -134,12 +134,6 @@ function TOOL:CreateBoard( trace )
 
 end
 
-function TOOL:Reload( trace )
-end
-
-function TOOL:Think()
-end
-
 if ( SERVER ) then
 
 	function MakeHoverboard( pl, model, ang, pos, mcontrol, shake, height, viewdist, trailsize, trail, boost, recharge, attributes )
@@ -214,35 +208,6 @@ if ( SERVER ) then
 		hoverboard:SetTrailColor( trail )
 		hoverboard:SetTrailBoostColor( boost )
 		hoverboard:SetTrailRechargeColor( recharge )
-
-		-- DISABLED: Overall attribute limit. This belongs in a gamemode, not in a Sandbox tool
-		--[[local count = 0
-		local points = GetConVarNumber( "sv_hoverboard_points" )
-
-		for k, v in pairs( attributes ) do
-
-			local remaining = points - count
-
-			v = math.Clamp( v, 0, math.min( 16, remaining ) )
-
-			--v = math.Clamp( v, 0, 16 )
-
-			attributes[ k ] = v
-
-			count = count + v
-
-		end]]
-
-		-- DISABLED: Per hoverboard bonus attribs
-		--[[for k, v in pairs( boardinfo.bonus or {} ) do
-
-			if ( attributes[ k ] ) then
-
-				attributes[ k ] = attributes[ k ] + tonumber( v )
-
-			end
-
-		end]]
 
 		-- Clamp the attribs, this should match the UI
 		attributes.speed = math.Clamp( attributes.speed, 1, 16 )
