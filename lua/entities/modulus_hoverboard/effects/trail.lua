@@ -2,6 +2,12 @@
 local glow = Material( "modulus_hoverboard/glow" )
 local trail = Material( "modulus_hoverboard/trail" )
 
+local UnPredictedCurTime = UnPredictedCurTime
+local CurTime = CurTime
+local Lerp = Lerp
+local math = math
+local render = render
+
 function EFFECT:RemapValClamped( value, a, b, c, d )
 
 	local v = math.Clamp( ( value - a ) / ( b - a ), 0, 1 ) -- clamp to 0/1

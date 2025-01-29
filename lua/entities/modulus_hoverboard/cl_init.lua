@@ -35,6 +35,16 @@ for _, filename in pairs( effectfiles ) do
 
 end
 
+local GetConVarNumber = GetConVarNumber
+local IsValid = IsValid
+local CurTime = CurTime
+local render = render
+local draw = draw
+local halo = halo
+local util = util
+local math = math
+local cam = cam
+
 function ENT:Initialize()
 
 	-- hover sound

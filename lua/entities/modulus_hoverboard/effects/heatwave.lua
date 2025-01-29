@@ -1,6 +1,10 @@
 
 local glow = Material( "modulus_hoverboard/glow" )
 
+local UnPredictedCurTime = UnPredictedCurTime
+local math = math
+local render = render
+
 function EFFECT:Init( pos, normal, scale )
 
 	self.Position = pos

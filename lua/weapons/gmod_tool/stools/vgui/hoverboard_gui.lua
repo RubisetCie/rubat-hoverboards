@@ -30,6 +30,8 @@ function PANEL:PerformLayout( )
 
 end
 
+local GetConVarString = GetConVarString
+
 function PANEL:Think()
 
 	if ( self.HoverboardTable ) then

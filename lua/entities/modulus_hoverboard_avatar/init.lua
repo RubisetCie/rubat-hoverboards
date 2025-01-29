@@ -20,6 +20,9 @@ function ENT:UpdateTransmitState()
 
 end
 
+local IsValid = IsValid
+local CurTime = CurTime
+
 function ENT:SetPlayer( pl )
 
 	self:SetNWEntity( "Player", pl )

@@ -2,6 +2,10 @@
 local plasma = Material( "effects/strider_muzzle" )
 local refract = Material( "sprites/heatwave" )
 
+local UnPredictedCurTime = UnPredictedCurTime
+local math = math
+local render = render
+
 function EFFECT:Init( pos, normal, scale )
 
 	self.Position = pos

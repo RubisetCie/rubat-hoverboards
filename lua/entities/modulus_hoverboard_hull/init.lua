@@ -4,6 +4,12 @@ AddCSLuaFile( "shared.lua" )
 
 include( "shared.lua" )
 
+local GetConVarNumber = GetConVarNumber
+local IsValid = IsValid
+local CurTime = CurTime
+local util = util
+local math = math
+
 function ENT:Precache( )
 
 	util.PrecacheModel( "models/modulus/player_hull.mdl" )

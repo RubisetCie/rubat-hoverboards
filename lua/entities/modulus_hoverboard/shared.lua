@@ -72,6 +72,8 @@ function ENT:GetThruster( index )
 
 end
 
+local IsValid = IsValid
+
 hook.Add( "Move", "Hoverboard_Move", function( pl, mv )
 
 	-- get the scripted vehicle

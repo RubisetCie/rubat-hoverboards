@@ -21,6 +21,12 @@ ENT.MountSoundFile = "buttons/button9.wav"
 ENT.UnMountSoundFile = "buttons/button19.wav"
 ENT.JumpSoundFile = "weapons/airboat/airboat_gun_energy1.wav"
 
+local GetConVarNumber = GetConVarNumber
+local IsValid = IsValid
+local CurTime = CurTime
+local util = util
+local math = math
+
 function ENT:Precache()
 
 	util.PrecacheSound( self.MountSoundFile )

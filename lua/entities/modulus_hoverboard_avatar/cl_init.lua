@@ -1,6 +1,8 @@
 
 include( "shared.lua" )
 
+local IsValid = IsValid
+
 function ENT:Draw( flags )
 
 	if ( !IsValid( self:GetNWEntity( "Board" ) ) or !IsValid( self:GetNWEntity( "Board" ):GetDriver() ) or !IsValid( self:GetNWEntity( "Player" ) ) ) then return end
