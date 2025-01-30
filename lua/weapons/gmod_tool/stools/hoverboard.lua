@@ -40,7 +40,7 @@ for _, hbt in pairs( HoverboardTypes ) do
 	list.Set( "HoverboardModels", hbt.model, {} )
 	util.PrecacheModel( hbt.model )
 
-	if ( SERVER and GetConVarNumber( "rb655_force_downloads" ) > 0 ) then
+	--[[if ( SERVER and GetConVarNumber( "rb655_force_downloads" ) > 0 ) then
 
 		resource.AddFile( hbt.model )
 
@@ -51,7 +51,7 @@ for _, hbt in pairs( HoverboardTypes ) do
 
 		end
 
-	end
+	end]]
 
 end
 
@@ -260,6 +260,7 @@ language.Add( "tool.hoverboard.lights.help", "The following commands are ONLY ac
 
 language.Add( "Undone_hoverboard", "Undone Hoverboard" )
 language.Add( "SBoxLimit_hoverboards", "You've reached the Hoverboard limit!" )
+language.Add( "max_hoverboards", "Max Hoverboards:" )
 
 local hbpanel = vgui.RegisterFile( "vgui/hoverboard_gui.lua" )
 
