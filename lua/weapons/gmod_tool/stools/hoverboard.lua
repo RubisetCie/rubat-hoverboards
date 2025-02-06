@@ -179,7 +179,7 @@ if ( SERVER ) then
 		hoverboard:Spawn()
 		hoverboard:Activate()
 
-		hoverboard:SetAvatarPosition( Vector( 0, 0, 0 ) )
+		hoverboard:SetAvatarPosition( vector_origin )
 
 		if ( boardinfo.driver ) then
 			hoverboard:SetAvatarPosition( boardinfo.driver )

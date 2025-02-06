@@ -4,13 +4,15 @@ AddCSLuaFile( "shared.lua" )
 
 include( "shared.lua" )
 
+local vector_origin = vector_origin
+
 function ENT:Initialize()
 
 	self:DrawShadow( false )
 	self:SetModel( self.Model )
 	self:SetMoveType( MOVETYPE_NONE )
 	self:SetSolid( SOLID_NONE )
-	self:SetCollisionBounds( Vector( 0, 0, 0 ), Vector( 0, 0, 0 ) )
+	self:SetCollisionBounds( vector_origin, vector_origin )
 
 end
 
@@ -40,7 +42,7 @@ function ENT:SetPlayer( pl )
 
 	self:SetMoveType( MOVETYPE_NONE )
 	self:SetSolid( SOLID_NONE )
-	self:SetCollisionBounds( Vector( 0, 0, 0 ), Vector( 0, 0, 0 ) )
+	self:SetCollisionBounds( vector_origin, vector_origin )
 
 	self:NextThink( CurTime() )
 

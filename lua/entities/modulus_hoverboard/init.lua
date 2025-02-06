@@ -26,6 +26,10 @@ local IsValid = IsValid
 local CurTime = CurTime
 local util = util
 local math = math
+local vector_up = vector_up
+local vector_origin = vector_origin
+local vector_front = Vector( 0, 1, 0 )
+local vector_right = Vector( 1, 0, 0 )
 
 function ENT:Precache()
 
@@ -562,8 +566,8 @@ function ENT:PhysicsSimulate( phys, deltatime )
 	local hoverheight = math.Clamp( tonumber( self:GetHoverHeight() ), 36, 100 )
 
 	-- force accumulators
-	local angular = Vector( 0, 0, 0 )
-	local linear = Vector( 0, 0, 0 )
+	local angular = vector_origin
+	local linear = vector_origin
 
 	-- hover spring power
 	local spring_power = self:GetSpring()
@@ -678,7 +682,7 @@ function ENT:PhysicsSimulate( phys, deltatime )
 				-- get angles
 				local ang1 = phys:GetAngles()
 				local ang2 = driver:GetAimVector():Angle()
-				ang2:RotateAroundAxis( Vector( 0, 0, -1 ), self:GetBoardRotation() )
+				ang2:RotateAroundAxis( -vector_up, self:GetBoardRotation() )
 
 				-- get the difference between the 2 and normalize it
 				local diff = math.NormalizeAngle( ang1.y - ang2.y )
@@ -773,8 +777,8 @@ function ENT:PhysicsSimulate( phys, deltatime )
 		if ( driver:KeyDown( IN_DUCK ) or driver:KeyDown( IN_ATTACK2 ) ) then
 
 			-- grinding destroys all forces
-			angular = Vector( 0, 0, 0 )
-			linear = Vector( 0, 0, 0 )
+			angular = vector_origin
+			linear = vector_origin
 
 			if ( !self:IsGrinding() ) then self:SetGrinding( true ) end
 
@@ -918,7 +922,7 @@ hook.Add( "KeyPress", "Hoverboard_KeyPress", function( pl, in_key )
 			-- get angle
 			local ang = board:GetAngles()
 			ang.r = 0
-			ang:RotateAroundAxis( Vector( 0, 0, 1 ), board:GetBoardRotation() + 180 )
+			ang:RotateAroundAxis( vector_up, board:GetBoardRotation() + 180 )
 
 			-- kick forward (prevents players from getting stuck in board)
 			phys:ApplyForceCenter( ang:Forward() * phys:GetMass() * 500 )
@@ -971,8 +975,8 @@ function ENT:Mount( pl )
 	-- Set player angles
 	local ang = self:GetAngles()
 	ang.r = 0
-	ang:RotateAroundAxis( Vector( 0, 0, 1 ), 180 )
-	ang:RotateAroundAxis( Vector( 0, 0, 1 ), self:GetBoardRotation() )
+	ang:RotateAroundAxis( vector_up, 180 )
+	ang:RotateAroundAxis( vector_up, self:GetBoardRotation() )
 
 	pl:SetAngles( ang )
 	pl:SetEyeAngles( ang )
@@ -1013,7 +1017,7 @@ function ENT:UnMount( pl )
 	-- Set player angles
 	local ang = self:GetAngles()
 	ang.r = 0
-	ang:RotateAroundAxis( Vector( 0, 0, 1 ), self:GetBoardRotation() + 180 )
+	ang:RotateAroundAxis( vector_up, self:GetBoardRotation() + 180 )
 
 	pl:SetAngles( ang )
 	pl:SetEyeAngles( ang )
@@ -1031,7 +1035,7 @@ function ENT:UnMount( pl )
 	-- Try to place the player in every direction from the board
 	pos = self:GetPos()
 	local mins, maxs = pl:GetHullDuck() -- Assume worst case
-	for id, vec in pairs( { self:GetForward(), -self:GetForward(), self:GetRight(), -self:GetRight(), self:GetUp(), -self:GetUp(), Vector( 1, 0, 0 ), Vector( -1, 0, 0 ), Vector( 0, 1, 0 ), Vector( 0, -1, 0 ), Vector( 0, 0, 1 ), Vector( 0, 0, -1 ) } ) do
+	for id, vec in pairs( { self:GetForward(), -self:GetForward(), self:GetRight(), -self:GetRight(), self:GetUp(), -self:GetUp(), vector_right, -vector_right, vector_front, -vector_front, vector_up, -vector_up } ) do
 
 		local tr = util.TraceHull( {
 			start = pos,
@@ -1095,8 +1099,8 @@ function ENT:AddEffect( effect, pos, normal, scale )
 
 	-- Add new effect
 	self:SetNWString( "Effect" .. index, effect )
-	self:SetNWVector( "EffectPos" .. index, pos or Vector( 0, 0, 0 ) )
-	self:SetNWVector( "EffectNormal" .. index, normal or Vector( 0, 0, 1 ) )
+	self:SetNWVector( "EffectPos" .. index, pos or vector_origin )
+	self:SetNWVector( "EffectNormal" .. index, normal or vector_up )
 	self:SetNWFloat( "EffectScale" .. index, scale or 1 )
 
 end

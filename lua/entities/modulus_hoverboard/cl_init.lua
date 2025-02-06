@@ -240,6 +240,10 @@ function ENT:Think()
 
 end
 
+local Color_White = color_white
+local Color_Green = Color( 128, 255, 128, 255 )
+local Color_Orange = Color( 255, 128, 128, 255 )
+
 function ENT:Draw( flags )
 
 	self:DrawModel( flags )
@@ -267,9 +271,9 @@ function ENT:Draw( flags )
 			}
 			local tr = util.TraceLine( trace )
 
-			local color = Color( 128, 255, 128, 255 )
+			local color = Color_Green
 			if ( tr.Hit ) then
-				color = Color( 255, 128, 128, 255 )
+				color = Color_Orange
 			end
 
 			local scale = ( self.ThrusterPoints[ i ].Spring or 1 ) * 0.5
@@ -340,7 +344,7 @@ hook.Add( "HUDPaint", "Hoverboard_HUDPaint", function()
 			-- draw text
 			draw.SimpleText( text, "Default",
 				ScrW() * 0.5, ( ScrH() * 0.5 ) + 100,
-				Color( 255, 255, 255, 255 ),
+				Color_White,
 				TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER
 			)
 
